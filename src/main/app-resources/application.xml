@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="application">
+  <jobTemplates>
+    <jobTemplate id="snap">
+      <streamingExecutable>/application/snap/run</streamingExecutable>
+      <defaultParameters>
+        <parameter id="master" title="Master TerraSAR-X product" abstract="Master TerraSAR-X product" scope="runtime" maxOccurs="1">https://catalog.terradue.com//noa-cosmoskymed/search?uid=CSKS1_SCS_B_HI_09_HH_RA_SF_20150830040406_20150830040413</parameter>
+        <parameter id="resamplingType" title="Interpolation Method" abstract="Interpolation Method" maxOccurs="1" scope="runtime" type="LiteralData">
+          <options>
+            <option>BILINEAR_INTERPOLATION</option>
+            <option>Bicubic interpolation</option>
+            <option>Bicubic2 interpolation</option>
+            <option>Linear interpolation</option>
+            <default>BILINEAR_INTERPOLATION</default>
+          </options>
+        </parameter>
+        <parameter id="polarization" title="Polarization" abstract="Polarization" maxOccurs="1" scope="runtime" type="LiteralData">
+          <options>
+           <option>HH</option>
+           <option>HV</option>
+           <default>HH</default>
+          </options>
+        </parameter>
+      </defaultParameters>
+      <defaultJobconf>
+        <property id="ciop.job.max.tasks">1</property>
+        <property id="mapred.task.timeout">9900000000000</property>
+      </defaultJobconf>
+    </jobTemplate>
+  </jobTemplates>
+  <workflow id="dcs-snap-TSX-ifg" title="SNAP application" abstract="SNAP application">
+    <workflowVersion>1.0</workflowVersion>
+    <node id="snap">
+      <job id="snap"/>
+      <sources>
+        <source scope="runtime" id="slave" title="Slave TerraSAR-X product" abstract="Slave TerraSAR-X product" refid="string:list" maxOccurs="1">https://catalog.terradue.com//noa-cosmoskymed/search?uid=CSKS4_SCS_B_HI_09_HH_RA_SF_20150911040406_20150911040413</source>
+      </sources>
+    </node>
+  </workflow>
+</application>
