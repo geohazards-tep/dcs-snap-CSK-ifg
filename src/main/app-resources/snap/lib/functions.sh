@@ -75,7 +75,7 @@ function main() {
   [[ -z ${online_resource} ]] && return ${ERR_NO_URL}
 
   ciop-log "INFO" "(2 of ${num_steps}) Retrieve COSMO-SkyMed master product from ${online_resource}"
-  local_master="$( ciop-copy -o ${TMPDIR} ${online_resource} )"
+  local_master="$( ciop-copy -U -o ${TMPDIR} ${online_resource} )"
   [[ -z ${local_master} ]] && return ${ERR_NO_MASTER} 
 
   local_master_h5="${TMPDIR}/$( tar xvfz ${local_master} '*.h5' )"
@@ -85,7 +85,7 @@ function main() {
   online_resource="$( opensearch-client ${slave} enclosure )"
   [[ -z ${online_resource} ]] && return ${ERR_NO_URL}
 
-  local_slave="$( ciop-copy -o ${TMPDIR} ${online_resource} )"
+  local_slave="$( ciop-copy -U -o ${TMPDIR} ${online_resource} )"
   [[ -z ${local_slave} ]] && return ${ERR_NO_SLAVE}
 
   local_slave_h5="${TMPDIR}/$( tar xvfz ${local_slave} '*.h5' )" 
