@@ -14,13 +14,6 @@
             <default>BILINEAR_INTERPOLATION</default>
           </options>
         </parameter>
-        <parameter id="polarization" title="Polarization" abstract="Polarization" maxOccurs="1" scope="runtime" type="LiteralData">
-          <options>
-           <option>HH</option>
-           <option>HV</option>
-           <default>HH</default>
-          </options>
-        </parameter>
       </defaultParameters>
       <defaultJobconf>
         <property id="ciop.job.max.tasks">1</property>

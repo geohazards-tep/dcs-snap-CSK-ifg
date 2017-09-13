@@ -25,7 +25,7 @@
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
       <masterBands/>
       <sourceBands/>
-      <resamplingType>NONE</resamplingType>
+      <resamplingType>${resamplingType}</resamplingType>
       <extent>Master</extent>
       <initialOffsetMethod>Orbit</initialOffsetMethod>
     </parameters>
