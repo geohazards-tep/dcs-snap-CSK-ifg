@@ -75,25 +75,28 @@ function main() {
   [[ -z ${online_resource} ]] && return ${ERR_NO_URL}
 
   ciop-log "INFO" "(2 of ${num_steps}) Retrieve COSMO-SkyMed master product from ${online_resource}"
-  local_master="$( ciop-copy -U -o ${TMPDIR} ${online_resource} )"
+  local_master="$( ciop-copy -o ${TMPDIR} ${online_resource} )"
   [[ -z ${local_master} ]] && return ${ERR_NO_MASTER} 
 
+  local_master_h5="${TMPDIR}/$( tar xvfz ${local_master} '*.h5' )"
   ciop-log "INFO" "(3 of ${num_steps}) Retrieve slave"
  
   ciop-log "INFO" "Retrieve ${slave}"
   online_resource="$( opensearch-client ${slave} enclosure )"
   [[ -z ${online_resource} ]] && return ${ERR_NO_URL}
 
-  local_slave="$( ciop-copy -U -o ${TMPDIR} ${online_resource} )"
+  local_slave="$( ciop-copy -o ${TMPDIR} ${online_resource} )"
   [[ -z ${local_slave} ]] && return ${ERR_NO_SLAVE}
- 
+
+  local_slave_h5="${TMPDIR}/$( tar xvfz ${local_slave} '*.h5' )" 
+
   out=${local_master}_result
 
   ciop-log "INFO" "(4 of ${num_steps}) Invoke SNAP GPT"
 
   gpt ${SNAP_REQUEST} \
-    -Pin1=${local_master} \
-    -Pin2=${local_slave} \
+    -Pin1=${local_master_h5} \
+    -Pin2=${local_slave_h5} \
     -Pout=${out} \
     -p ${TMPDIR}/snap.params 1>&2 || return ${ERR_SNAP} 
 
