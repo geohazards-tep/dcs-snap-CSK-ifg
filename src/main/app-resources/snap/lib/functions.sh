@@ -79,7 +79,8 @@ function main() {
   [[ -z ${local_master} ]] && return ${ERR_NO_MASTER} 
 
   local_master_h5="${TMPDIR}/$( tar xvfz ${local_master} '*.h5' )"
-  
+  rm -f ${local_master}  
+
   ciop-log "INFO" "(3 of ${num_steps}) Resolve COSMO-SkyMed slave online resource"
   online_resource="$( opensearch-client ${slave} enclosure )"
   [[ -z ${online_resource} ]] && return ${ERR_NO_URL}
@@ -89,6 +90,7 @@ function main() {
   [[ -z ${local_slave} ]] && return ${ERR_NO_SLAVE}
 
   local_slave_h5="${TMPDIR}/$( tar xvfz ${local_slave} '*.h5' )" 
+  rm -f ${local_slave}
 
   out=${local_master}_result
 
@@ -99,6 +101,8 @@ function main() {
     -Pin2=${local_slave_h5} \
     -Pout=${out} \
     -p ${TMPDIR}/snap.params 1>&2 || return ${ERR_SNAP} 
+
+  rm -f ${local_master_h5} ${local_slave_h5}
 
   ciop-log "INFO" "(6 of ${num_steps}) Compress results"  
   tar -C ${TMPDIR} -czf ${out}.tgz $( basename ${out}).dim $( basename ${out}).data || return ${ERR_COMPRESS}

@@ -107,7 +107,7 @@
       <sourceProduct refid="GoldsteinPhaseFiltering"/>
     </sources>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>$[out}</file>
+      <file>${out}</file>
       <formatName>BEAM-DIMAP</formatName>
     </parameters>
   </node>

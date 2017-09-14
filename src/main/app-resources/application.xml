@@ -21,7 +21,7 @@
       </defaultJobconf>
     </jobTemplate>
   </jobTemplates>
-  <workflow id="dcs-snap-TSX-ifg" title="SNAP application" abstract="SNAP application">
+  <workflow id="dcs-snap-CSK-ifg" title="COSMO-SkyMed interferogram generation with SNAP" abstract="COSMO-SkyMed interferogram generation with SNAP">
     <workflowVersion>1.0</workflowVersion>
     <node id="snap">
       <job id="snap"/>
