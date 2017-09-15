@@ -4,7 +4,7 @@
     <jobTemplate id="snap">
       <streamingExecutable>/application/snap/run</streamingExecutable>
       <defaultParameters>
-        <parameter id="master" title="Master TerraSAR-X product" abstract="Master TerraSAR-X product" scope="runtime" maxOccurs="1">https://catalog.terradue.com//noa-cosmoskymed/search?uid=CSKS1_SCS_B_HI_09_HH_RA_SF_20150830040406_20150830040413</parameter>
+        <parameter id="master" title="Master COSMO-SkyMed product" abstract="Master COSMO-SkyMed product" scope="runtime" maxOccurs="1">https://catalog.terradue.com//noa-cosmoskymed/search?uid=CSKS1_SCS_B_HI_09_HH_RA_SF_20150830040406_20150830040413</parameter>
         <parameter id="resamplingType" title="Interpolation Method" abstract="Interpolation Method" maxOccurs="1" scope="runtime" type="LiteralData">
           <options>
             <option>BILINEAR_INTERPOLATION</option>
@@ -26,7 +26,7 @@
     <node id="snap">
       <job id="snap"/>
       <sources>
-        <source scope="runtime" id="slave" title="Slave TerraSAR-X product" abstract="Slave TerraSAR-X product" refid="string:list" maxOccurs="1">https://catalog.terradue.com//noa-cosmoskymed/search?uid=CSKS4_SCS_B_HI_09_HH_RA_SF_20150911040406_20150911040413</source>
+        <source scope="runtime" id="slave" title="Slave COSMO-SkyMed product" abstract="Slave COSMO-SkyMed product" refid="string:list" maxOccurs="1">https://catalog.terradue.com//noa-cosmoskymed/search?uid=CSKS4_SCS_B_HI_09_HH_RA_SF_20150911040406_20150911040413</source>
       </sources>
     </node>
   </workflow>
