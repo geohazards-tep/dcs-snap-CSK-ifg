@@ -1,4 +1,4 @@
-## Developer Cloud Sandbox <app-name> application  
+## Developer Cloud Sandbox for COSMO-SkyMed interferogram generation with SNAP
 
 Put here an introductory text describing the application.
 
