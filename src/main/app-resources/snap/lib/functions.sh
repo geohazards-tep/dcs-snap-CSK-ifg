@@ -92,7 +92,7 @@ function main() {
   local_slave_h5="${TMPDIR}/$( tar xvfz ${local_slave} '*.h5' )" 
   rm -f ${local_slave}
 
-  out=${local_master}_result
+  out=${TMPDIR}/CSK_IFG
 
   ciop-log "INFO" "(5 of ${num_steps}) Invoke SNAP GPT"
 
